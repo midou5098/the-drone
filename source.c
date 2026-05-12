@@ -14,7 +14,13 @@ void animate(int x, int y, int dir, SDL_Texture *drone,SDL_Renderer* renderer,Ui
     int framey=cur_fra/6;
     SDL_Rect rect={framex*framewidth,framey*frameheight,framewidth,frameheight};
     SDL_Rect dst={x,y,150,150};
-    SDL_RenderCopy(renderer,drone,&rect,&dst);
+    if(dir==1){
+        SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+        SDL_RenderCopyEx(renderer,drone,&rect,&dst,0.0,NULL,flip);
+    }else{
+        SDL_RenderCopy(renderer,drone,&rect,&dst);
+
+    }
     
     
     

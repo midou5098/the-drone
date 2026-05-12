@@ -12,6 +12,7 @@ int main(void){
     SDL_Texture* drone=SDL_CreateTextureFromSurface(renderer,s);
     Uint32 currentime,lastime=0;
     int cur=0;
+    int dir=0;//gonna use 0 for left and 1 for right 
     int frame_d=50;
     int px=300,py=300;
     
@@ -33,9 +34,11 @@ int main(void){
 
                 }else if (key==SDLK_LEFT){
                     px-=10;
+                    dir=0;
 //here i was stuck for about 20 minutes just bcz i used =+ instead of -= .. bruh things be just overreacting walah
                 }else if (key==SDLK_RIGHT){
                     px+=10;
+                    dir=1;
 
                 }
 
@@ -49,7 +52,7 @@ int main(void){
         
         SDL_SetRenderDrawColor(renderer,140,90,180,255);
         SDL_RenderClear(renderer);
-        animate(px,py,1,drone,renderer,currentime,lastime,cur);
+        animate(px,py,dir,drone,renderer,currentime,lastime,cur);
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
