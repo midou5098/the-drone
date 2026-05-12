@@ -1,4 +1,5 @@
 #include "headers.h"
+#include <SDL2/SDL_keycode.h>
 #include <SDL2/SDL_timer.h>
 
 int main(void){
@@ -11,7 +12,8 @@ int main(void){
     SDL_Texture* drone=SDL_CreateTextureFromSurface(renderer,s);
     Uint32 currentime,lastime=0;
     int cur=0;
-    int frame_d=100;
+    int frame_d=50;
+    int px=300,py=300;
     
     bool running=true;
     SDL_Event event; //bitchass timing the mf wont start
@@ -21,6 +23,21 @@ int main(void){
         while(SDL_PollEvent(&event)){
             if (event.type==SDL_QUIT){
                 running =false;
+
+            }else if (event.type==SDL_KEYDOWN){
+                SDL_KeyCode key=event.key.keysym.sym;
+                if (key==SDLK_DOWN){
+                    py+=10;
+                }else if (key==SDLK_UP){
+                    py-=10;
+
+                }else if (key==SDLK_LEFT){
+                    px-=10;
+//here i was stuck for about 20 minutes just bcz i used =+ instead of -= .. bruh things be just overreacting walah
+                }else if (key==SDLK_RIGHT){
+                    px+=10;
+
+                }
 
             }
         }
@@ -32,9 +49,9 @@ int main(void){
         
         SDL_SetRenderDrawColor(renderer,140,90,180,255);
         SDL_RenderClear(renderer);
-        animate(300,600,1,drone,renderer,currentime,lastime,cur);
+        animate(px,py,1,drone,renderer,currentime,lastime,cur);
         SDL_RenderPresent(renderer);
-
+        SDL_Delay(16);
     }
     TTF_Quit();
     IMG_Quit();
