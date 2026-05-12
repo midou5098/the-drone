@@ -10,6 +10,6 @@
 
 
 void animate(int x, int y, int dir, SDL_Texture *drone,SDL_Renderer* renderer,Uint32 currentime,Uint32 lastime,int cur_fra);
-
+void statcd(int px,int py,int dir,SDL_Texture* dronst,SDL_Renderer* renderer);
 
 

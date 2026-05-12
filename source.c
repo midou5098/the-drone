@@ -21,11 +21,27 @@ void animate(int x, int y, int dir, SDL_Texture *drone,SDL_Renderer* renderer,Ui
         SDL_RenderCopy(renderer,drone,&rect,&dst);
 
     }
+}
+void statcd(int px,int py,int dir,SDL_Texture* dronst,SDL_Renderer* renderer){
+    int w,h;
+    SDL_QueryTexture(dronst,NULL,NULL,&w,&h);
+    SDL_Rect rect={px,470,160,330};
     
-    
+    if(dir==1){
+        SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
+        SDL_RenderCopyEx(renderer,dronst,NULL,&rect,0.0,NULL,flip);
+    }else{
+        SDL_RenderCopy(renderer,dronst,NULL,&rect);
+
+    }
+
+
+
+}
+
+
     
     
     
     
 
-}
