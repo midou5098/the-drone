@@ -12,6 +12,9 @@ int main(void){
     SDL_Texture* drone=SDL_CreateTextureFromSurface(renderer,s);
     SDL_Surface* sm=IMG_Load("assets/dronestat.png");
     SDL_Texture* dronest=SDL_CreateTextureFromSurface(renderer,sm);
+    SDL_Surface* bgs=IMG_Load("assets/epstein_island.png");
+    SDL_Texture* bg=SDL_CreateTextureFromSurface(renderer,bgs);
+    SDL_Rect bgr={0,0,1280,720};
     Uint32 currentime,lastime=0;
     int cur=0;
     int dir=0;//gonna use 0 for left and 1 for right 
@@ -62,6 +65,7 @@ int main(void){
         
         SDL_SetRenderDrawColor(renderer,140,90,180,255);
         SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer,bg,NULL,&bgr);
         if (py<590){
             animate(px,py,dir,drone,renderer,currentime,lastime,cur);
         }else{

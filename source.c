@@ -13,7 +13,7 @@ void animate(int x, int y, int dir, SDL_Texture *drone,SDL_Renderer* renderer,Ui
     int framex=cur_fra%6;
     int framey=cur_fra/6;
     SDL_Rect rect={framex*framewidth,framey*frameheight,framewidth,frameheight};
-    SDL_Rect dst={x,y,150,150};
+    SDL_Rect dst={x,y,100,100};
     if(dir==1){
         SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
         SDL_RenderCopyEx(renderer,drone,&rect,&dst,0.0,NULL,flip);
@@ -25,7 +25,7 @@ void animate(int x, int y, int dir, SDL_Texture *drone,SDL_Renderer* renderer,Ui
 void statcd(int px,int py,int dir,SDL_Texture* dronst,SDL_Renderer* renderer){
     int w,h;
     SDL_QueryTexture(dronst,NULL,NULL,&w,&h);
-    SDL_Rect rect={px,470,160,330};
+    SDL_Rect rect={px,490,100,250};
     
     if(dir==1){
         SDL_RendererFlip flip = SDL_FLIP_HORIZONTAL;
